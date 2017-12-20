@@ -1,0 +1,22 @@
+{
+  "name": "curso-webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack index.js bundle.js",
+    "build-local": "webpack",
+    "build-external": "webpack --config ./config/webpack.config.js"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "Fabio Rojas <fabiorojas7@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^0.28.7",
+    "style-loader": "^0.19.1",
+    "webpack": "^3.10.0"
+  }
+}
