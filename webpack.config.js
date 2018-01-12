@@ -43,7 +43,7 @@ module.exports = {
                   loader: 'babel-loader',
                   options: {
                     //presets: ['@babel/preset-env']
-                    presets: ['es2016']
+                    presets: ['es2016','react']
                   }
                 }
               },
@@ -55,6 +55,36 @@ module.exports = {
                 use:ExtractTextPlugin.extract({
                     fallback:"style-loader",
                     use:"css-loader"
+                })
+            },
+             //soporte para sass
+            {
+                test:/\.scss$/,
+                use:ExtractTextPlugin.extract({
+                    fallback:"style-loader",
+                    use:["css-loader",'sass-loader']
+                })
+            },
+
+               //soporte para stylus
+               {
+                test:/\.styl$/,
+                use:ExtractTextPlugin.extract({
+                    fallback:"style-loader",
+                    use:["css-loader",
+                    {
+                        loader:'stylus-loader',
+                        options:{
+                            use:[
+                                require('nib'),
+                                require('rupture')
+                            ],
+                            import:[
+                                '~nib/lib/nib/index.styl',
+                                '~rupture/rupture/index.styl'
+                            ]
+                        }
+                    }]
                 })
             },
 
@@ -82,6 +112,14 @@ module.exports = {
                        name:'videos/[name].[hash].[ext]'
                    } 
                 }
+
+             },
+
+              //soporte para json
+
+              {
+                test:/\.json$/,
+                use:'json-loader'
 
              }
         
